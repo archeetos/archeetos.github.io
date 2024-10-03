@@ -58,39 +58,37 @@ const Home: React.FC = () => {
 
   return (
     <div className="main-content">
-    <h1>Career Timeline</h1>
-    <h2> Today: {dateToday} </h2>
-    <div className="timeline-content">
-        <Chrono className="chrono-content"
-          mode="VERTICAL_ALTERNATING"
-          items={items}
-          titleDateFormat="MMM YYYY"
-          // showAllCardsHorizontal
-          cardWidth={800}
-          cardHeight={350}
-          disableToolbar
-          toolbarPosition="BOTTOM"
-          slieShowType="reveal"
-          slideShow
-          scrollable={{ scrollbar: false }}
-          timelinePointShape="diamond"
-          theme={{
-            titleColor: "black",
-            titleColorActive: "white",
-            titleBgColor: "white",
-            primary: getCssVariable("--azure"),
-            secondary: getCssVariable("--orange-creamsicle"),
-          }}
-        >
-          {items.map((item, index) => (
-            <div className="timeline-card-img-box" key={index}>
-              {item.image && <img src={item.image} alt={item.cardTitle} className="timeline-card-img" />}
-              <p>{item.cardDetailedText}</p>
-            </div>
-        ))}
-        </Chrono>
-    </div>
-    <h2> Career Start: {careerStartDate} </h2>
+      <h1>Career Timeline</h1>
+      <h2> Today: {dateToday} </h2>
+      <div className="timeline-content">
+          <Chrono className="chrono-content"
+            mode="VERTICAL_ALTERNATING"
+            titleDateFormat="MMM YYYY"
+            // showAllCardsHorizontal
+            disableToolbar
+            toolbarPosition="BOTTOM"
+            slieShowType="reveal"
+            slideShow
+            scrollable={{ scrollbar: false }}
+            timelinePointShape="diamond"
+            theme={{
+              titleColor: "black",
+              titleColorActive: "white",
+              titleBgColor: "white",
+              primary: getCssVariable("--azure"),
+              secondary: getCssVariable("--orange-creamsicle"),
+            }}
+          >
+            {items.map((item, index) => (
+              <div className="timeline-card-img-box" key={index}>
+                {item.image && <img src={item.image} alt={item.cardTitle} className="timeline-card-img" />}
+                <h2 className="timetime-card-h2">{item.cardSubtitle}</h2>
+                <p className="timeline-card-detail">{item.cardDetailedText}</p>
+              </div>
+          ))}
+          </Chrono>
+        </div>
+      <h2> Since: {careerStartDate} </h2>
   </div>
   );
 };
