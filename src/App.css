@@ -1,4 +1,16 @@
-/* Basic reset */
+/* Define CSS variables in your stylesheet */
+:root {
+  --primary-color: #3498db; /* Blue color */
+  --secondary-color: #2ecc71; /* Green color */
+  --azure: #007FFF; /**1E90FF*/ 
+  --orange-creamsicle: #ff9427; /*#FF8000*/
+  --lemon-chiffon: #F9E79F;
+  --banner-blue: #3498db;
+  --banner-green: #2ecc71;
+
+
+}
+
 body, html, #root, .App {
   margin: 0;
   padding: 0;
@@ -21,7 +33,7 @@ body, html, #root, .App {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-image: linear-gradient(45deg, var(--banner-blue), var(--banner-green));
   padding: 10px 20px;
 }
 
@@ -104,12 +116,17 @@ body, html, #root, .App {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  height: 100vb;
+  background-image: linear-gradient(to bottom, #FFFFFF 1%, #E6F7FF 100%);
 }
 
 /* Footer Styling */
 .footer {
-  background-color: #333;
+  background-color: #005080;
   color: white;
   text-align: center;
   padding: 10px 0;
+  /* position: fixed;
+  bottom: 0;
+  width: 100%; */
 }

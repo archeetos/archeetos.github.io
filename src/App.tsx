@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Home from 'pages/Home';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 
 
@@ -30,13 +31,6 @@ const About: React.FC = () => (
   </div>
 );
 
-const Home: React.FC = () => (
-  <div  className="main-content">
-    <h1>Home Page</h1>
-    {underConstructionDiv}
-  </div>
-);
-
 const App: React.FC = () => {
   return (
     <Router>
@@ -56,6 +50,12 @@ const NavBar: React.FC = () => (
       <NavLink to="/" className="username">archeetos</NavLink>
     </div>
     <div className="navbar-menu-items">
+      <NavLink
+        to="/"
+        className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+      >
+        Home
+      </NavLink>
       <NavLink
         to="/portfolio"
         className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
@@ -79,6 +79,7 @@ const NavBar: React.FC = () => (
 
 const MainContent: React.FC = () => (
   <Routes>
+    <Route path="/" element={<Home />} />
     <Route path="/" element={<Home />} />
     <Route path="/portfolio" element={<Portfolio />} />
     <Route path="/about" element={<About />} />
