@@ -1,0 +1,57 @@
+import React from "react";
+import { Chrono } from "react-chrono";
+// import timelineData from 'static/TimelineData';
+
+
+const Home: React.FC = () => {
+    const items = [
+      {
+        cardTitle: "Amazon",
+        date: new Date(2015, 7),
+        title: "Amazon Career",
+        cardSubtitle: "Software Engineering at Amazon",
+        cardDetailedText:`7 year career at Amazon encompassing software engineering and engineering management.
+          My roles explored low-level device software and large scale clould infrastructure.`,
+        image: "/assets/images/amazon_logo.svg",
+
+      },
+      {
+        cardTitle: "Plenty",
+        title: "Plenty Career",
+        date: new Date(2022, 9),
+        cardSubtitle: "Software Manager - DevOps and Operational Excellence",
+        cardDetailedText: `Managed a team of 5-7 DevOps engineer responsible for developer expereince, deployment, 
+        performance and SRE of Plenty's clould and on-premise software systems.
+        In additon, I also led operational excellence initiatives for ~50 person software organization.`,
+        image: "/assets/images/plenty_logo.svg"
+        },
+  ];
+
+  return (<div className="main-content">
+    <h1>Home Page</h1>
+    {/* Your content here */}
+    <div style={{ width: "90%", height: "100%" }}>
+        <Chrono 
+          items={items}
+          titleDateFormat='MMM YYYY'
+          showAllCardsHorizontal
+          cardWidth={350}
+          cardHeight={450}
+          mediaSettings={{
+            align: 'center',
+            fit: 'contain'
+          }}
+        >
+          {items.map((item, index) => (
+            <div key={index}>
+              {item.image && <img src={item.image} alt={item.cardTitle} style={{ width: "100%", height: "auto" }} />}
+              <p>{item.cardDetailedText}</p>
+            </div>
+        ))}
+        </Chrono>
+    </div>
+  </div>
+  );
+};
+
+export default Home;

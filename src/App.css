@@ -2,16 +2,19 @@
 :root {
   --primary-color: #3498db; /* Blue color */
   --secondary-color: #2ecc71; /* Green color */
-  --azure: #007FFF; /**1E90FF*/ 
+  --azure: #007fff; /**1E90FF*/
   --orange-creamsicle: #ff9427; /*#FF8000*/
-  --lemon-chiffon: #F9E79F;
+  --lemon-chiffon: #f9e79f;
   --banner-blue: #3498db;
   --banner-green: #2ecc71;
 
   --max-app-width: 2160px;
 }
 
-body, html, #root, .App {
+body,
+html,
+#root,
+.App {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -24,14 +27,18 @@ body, html, #root, .App {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom, #FFFFFF 1%, #E6F7FF 100%);
+  background-image: linear-gradient(to bottom, #ffffff 1%, #e6f7ff 100%);
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: linear-gradient(45deg, var(--banner-blue), var(--banner-green));
+  background-image: linear-gradient(
+    45deg,
+    var(--banner-blue),
+    var(--banner-green)
+  );
   min-width: 0;
   width: 100%;
   max-width: var(--max-app-width);
@@ -47,6 +54,7 @@ body, html, #root, .App {
   flex-grow: 1;
   min-width: 0;
   width: 100%;
+  overflow-y: auto;
   max-width: var(--max-app-width);
 }
 
@@ -66,7 +74,7 @@ body, html, #root, .App {
 .navbar-username {
   display: flex;
   align-items: center;
-  height: 100%;   
+  height: 100%;
 }
 
 .username {
@@ -76,7 +84,7 @@ body, html, #root, .App {
 }
 
 .username:hover {
-  color: #666; 
+  color: #666;
 }
 
 .icon {
@@ -137,7 +145,16 @@ body, html, #root, .App {
 
 .nav-link.active {
   text-decoration: underline;
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 300%; /* Expand the gradient background */
@@ -145,6 +162,10 @@ body, html, #root, .App {
 }
 
 @keyframes rainbow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100%, 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%, 50%;
+  }
 }
