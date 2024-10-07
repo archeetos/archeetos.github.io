@@ -1,22 +1,49 @@
 import React, { useState } from 'react';
 import { Badge, Timeline, Text, Transition } from '@mantine/core';
 
+import { VerticalTimelineElement } from 'react-vertical-timeline-component';
+
 import './Timeline.css';
 import { TimelineItem } from 'components/TimelineInterfaces';
 
+const getCssVariable = (variableName: string) => {
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(variableName)
+    .trim();
+};
+
 interface TimelineBoxProps {
   item: TimelineItem;
-  height: number;
-  width: number;
+  index: number;
 }
 
-const TimelineBox: React.FC<TimelineBoxProps> = ({ item, height, width }) => {
+const TimelineBox: React.FC<TimelineBoxProps> = ({ item, index }) => {
   const [flipped, setFlipped] = useState(false);
-
+  const dateClassName = `timeline-date-style ${index % 2 === 0 ? 'align-left' : 'align-right'}`;
   return (
-    <div
-      // style={{ height: `${height}px`, width: '100%' }}
+    <VerticalTimelineElement
       className="timeline-card-box"
+      contentStyle={{
+        borderRadius: '5%',
+      }}
+      contentArrowStyle={{
+        borderRight: `7px solid  ${getCssVariable('--orange-creamsicle')}`,
+      }}
+      date={item.timeframe}
+      dateClassName={dateClassName}
+      iconClassName="timeline-icon-style"
+      icon={
+        <img
+          src={item.icon}
+          alt="Custom Icon"
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: '50%', // Make the image circular if desired
+            objectFit: 'cover', // Ensure the image covers the icon area
+          }}
+        />
+      }
     >
       {item.image && (
         <img
@@ -92,7 +119,7 @@ const TimelineBox: React.FC<TimelineBoxProps> = ({ item, height, width }) => {
           )}
         </Transition>
       </div>
-    </div>
+    </VerticalTimelineElement>
   );
 };
 

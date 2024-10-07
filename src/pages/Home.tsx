@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Chrono } from 'react-chrono';
 import TimelineBox from 'components/TimelineBox';
+import { VerticalTimeline } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+
 import './Pages.css';
 
 const getCssVariable = (variableName: string) => {
@@ -20,9 +22,11 @@ const Home: React.FC = () => {
       cardTitle: 'Amazon',
       title: 'Aug 2015 to Sept 2022: Amazon',
       cardSubtitle: 'Software Engineering at Amazon',
+      timeframe: 'Aug 2015 - Oct 2024',
       cardDetailedText: `7 year career at Amazon encompassing software engineering and engineering management.
           My roles explored low-level device software and large scale clould infrastructure.`,
       image: '/assets/images/amazon_logo.svg',
+      icon: '/assets/images/amz_sm2.png',
       items: [
         {
           title: 'Software Engineer - FireOS/Android Platform',
@@ -55,10 +59,12 @@ const Home: React.FC = () => {
       cardTitle: 'Plenty',
       title: 'Oct 2022 to Jan 2024: Plenty Unlimited',
       cardSubtitle: 'Software Manager - DevOps and Operational Excellence',
+      timeframe: 'Oct 2022 - Jan 2024',
       cardDetailedText: `Managed a team of 5-7 DevOps engineer responsible for developer expereince, deployment, 
         performance and SRE of Plenty's clould and on-premise software systems.
         In additon, I also led operational excellence initiatives for ~50 person software organization.`,
       image: '/assets/images/plenty_logo.svg',
+      icon: '/assets/images/plenty_sm.png',
       tags: [
         'Leadership and Management',
         'AWS Cloud Infrastructure',
@@ -75,8 +81,10 @@ const Home: React.FC = () => {
       cardTitle: 'LogicManager',
       title: '2024-Now: LogicManager',
       cardSubtitle: 'Technical Software Lead',
+      timeframe: 'May 2024 - Present',
       cardDetailedText: `Leading a team of 4 engineers building features for a full-stack enterprise-grade web-app.`,
       image: '/assets/images/lm_logo.png',
+      icon: '/assets/images/lm_sm.png',
       tags: [
         'Leadership and Management',
         'Full-stack web-app',
@@ -130,38 +138,15 @@ const Home: React.FC = () => {
       <h2> Today: {dateToday} </h2>
 
       <div className="timeline-content">
-        <Chrono
-          className="chrono-content"
-          mode="VERTICAL_ALTERNATING"
-          titleDateFormat="MMM YYYY"
-          // showAllCardsHorizontal
-          disableToolbar
-          toolbarPosition="BOTTOM"
-          slieShowType="reveal"
-          slideShow
-          timelinePointShape="diamond"
-          scrollable={{ scrollbar: true }}
-          onScrollEnd
-          useReadMore
-          cardWidth={width}
-          readMore={true}
-          theme={{
-            titleColor: 'black',
-            titleColorActive: 'white',
-            titleBgColor: 'white',
-            primary: getCssVariable('--azure'),
-            secondary: getCssVariable('--orange-creamsicle'),
-          }}
+        <VerticalTimeline
+          className="vertical-timeline-custom"
+          animate={true}
+          lineColor={getCssVariable('--azure')}
         >
           {items.map((item, index) => (
-            <TimelineBox
-              key={index}
-              height={height}
-              width={width}
-              item={item}
-            />
+            <TimelineBox key={index} item={item} index={index} />
           ))}
-        </Chrono>
+        </VerticalTimeline>
       </div>
       <h2> Since: {careerStartDate} </h2>
     </div>
