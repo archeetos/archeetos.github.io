@@ -2,14 +2,15 @@
   margin: 0.05rem 0.1rem;
 }
 
-.timeline-card-h2 {
-  font-size: 1rem;
-  color: var(--azure);
-  font-weight: bold;
-  margin: 0.5rem;
+.badge-box {
+  margin: 1rem 0rem;
 }
 
-.timeline-card-img {
+.mantine-text-margin-override {
+  margin: 0.2rem !important;
+}
+
+.timeline-card-header-img {
   margin-top: 0.5rem;
   width: auto;
   height: 2.5rem;
@@ -32,17 +33,32 @@
   text-align: right;
 }
 
-.timeline-card-box {
-  flex-direction: column;
-  align-items: center;
+.custom-timeline-element {
+  margin: 0;
   text-align: center;
+  align-items: center;
 }
 
 .timeline-card-detail {
   font-size: 0.85rem;
-  font-family: sans-serif;
+  font-weight: 350 !important;
+  font-family: roboto;
   font-style: italic;
-  margin-bottom: 0.3rem;
+}
+
+.nested-timeline {
+  margin: 1rem 0rem;
+}
+
+.nested-timeline-detail {
+  margin: 0rem 0rem;
+}
+
+.timeline-card-main-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .timeline-card-core {
@@ -50,6 +66,20 @@
   flex-direction: column;
 }
 
-.nested-timeline {
-  margin: 1rem 0rem;
+.card-front,
+.card-back {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.hover-indicator {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  transition: opacity 0.3s ease;
+  opacity: 1; /* Initially visible */
+  pointer-events: none; /* Prevents blocking mouse events */
 }

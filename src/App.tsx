@@ -49,7 +49,7 @@ const App: React.FC = () => {
 const NavBar: React.FC = () => (
   <nav className="navbar">
     <div className="navbar-username">
-      <img src="/assets/images/archeetos.png" alt="arch" className="icon" />
+      <img src="/assets/images/archeetos.png" alt="arch" className="nav-icon" />
       <NavLink to="/" className="username">
         archeetos
       </NavLink>

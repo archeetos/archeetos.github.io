@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Badge, Timeline, Text, Transition } from '@mantine/core';
+import { Indicator, Text } from '@mantine/core';
 
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
-
-import './Timeline.css';
 import { TimelineItem } from 'components/TimelineInterfaces';
+import TimelineHoverView from './TimelineHoverView';
+import './Timeline.css';
 
 const getCssVariable = (variableName: string) => {
   return getComputedStyle(document.documentElement)
@@ -18,19 +18,24 @@ interface TimelineBoxProps {
 }
 
 const TimelineBox: React.FC<TimelineBoxProps> = ({ item, index }) => {
-  const [flipped, setFlipped] = useState(false);
-  const dateClassName = `timeline-date-style ${index % 2 === 0 ? 'align-left' : 'align-right'}`;
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleFlip = (newFlipState: boolean) => {
+    setIsFlipped(newFlipState);
+  };
+
   return (
     <VerticalTimelineElement
-      className="timeline-card-box"
+      className="custom-timeline-element"
       contentStyle={{
         borderRadius: '5%',
+        textAlign: index % 2 === 0 ? 'left' : 'right', // Use 'left' or 'right' directly
       }}
       contentArrowStyle={{
         borderRight: `7px solid  ${getCssVariable('--orange-creamsicle')}`,
       }}
       date={item.timeframe}
-      dateClassName={dateClassName}
+      dateClassName="timeline-date-style"
       iconClassName="timeline-icon-style"
       icon={
         <img
@@ -40,85 +45,41 @@ const TimelineBox: React.FC<TimelineBoxProps> = ({ item, index }) => {
             width: '100%',
             height: '100%',
             borderRadius: '50%', // Make the image circular if desired
-            objectFit: 'cover', // Ensure the image covers the icon area
+            objectFit: 'contain',
           }}
         />
       }
     >
-      {item.image && (
-        <img
-          src={item.image}
-          alt={item.cardTitle}
-          className="timeline-card-img"
-        />
-      )}
-      <Text className="timeline-card-h2">{item.cardSubtitle}</Text>
-      <div
-        className="timeline-card-core"
-        onMouseEnter={() => setFlipped(true)}
-        onMouseLeave={() => setFlipped(false)}
+      <Indicator
+        label="Hover for details"
+        size={16}
+        position="top-center"
+        offset={-10}
+        color="gray"
       >
-        <Transition
-          mounted={!flipped}
-          transition="pop"
-          duration={400}
-          timingFunction="ease"
-          enterDelay={400}
-          keepMounted={true}
+        <div
+          className="timeline-card-main-container"
+          onMouseEnter={() => handleFlip(true)}
+          onMouseLeave={() => handleFlip(false)}
         >
-          {(styles) => (
-            <div className="card-front" style={styles}>
-              <Text size="s" className="timeline-card-detail">
-                {item.cardDetailedText}
-              </Text>
-              <div>
-                {item.tags?.map((tag: string, index: number) => (
-                  <Badge
-                    key={index}
-                    color="orange"
-                    variant="outline"
-                    radius="lg"
-                    className="badge-style"
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+          {item.image && (
+            <img
+              src={item.image}
+              alt={item.cardTitle}
+              className="timeline-card-header-img"
+            />
           )}
-        </Transition>
-        <Transition
-          mounted={flipped}
-          transition="pop"
-          duration={400}
-          timingFunction="ease"
-          enterDelay={400}
-          keepMounted={true}
-        >
-          {(styles) => (
-            <div className="card-back" style={styles}>
-              {item.items?.length && (
-                <Timeline
-                  className="nested-timeline"
-                  active={1}
-                  bulletSize={24}
-                  lineWidth={2}
-                >
-                  {item.items.map((subItem, subIndex) => (
-                    <Timeline.Item
-                      key={subIndex}
-                      title={subItem.title}
-                      className="sub-tiem"
-                    >
-                      <Text size="xs">{subItem.description}</Text>
-                    </Timeline.Item>
-                  ))}
-                </Timeline>
-              )}
-            </div>
-          )}
-        </Transition>
-      </div>
+          <Text
+            classNames={{
+              root: 'mantine-text-margin-override',
+            }}
+            c={getCssVariable('--azure')}
+          >
+            {item.cardSubtitle}
+          </Text>
+          <TimelineHoverView item={item} flipState={isFlipped} />
+        </div>
+      </Indicator>
     </VerticalTimelineElement>
   );
 };

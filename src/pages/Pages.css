@@ -5,6 +5,18 @@
   flex-direction: column;
 }
 
+.timeline-end-text {
+  margin: 0;
+}
+
+.timeline-end-point {
+  margin: 0;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: var(--azure);
+}
+
 .about-test {
   display: flex;
   flex-direction: row;

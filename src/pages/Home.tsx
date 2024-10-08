@@ -30,14 +30,16 @@ const Home: React.FC = () => {
       items: [
         {
           title: 'Software Engineer - FireOS/Android Platform',
-          description: 'Software Engineering for FireOS and Android ',
-          startDate: 'Aug, 2015',
+          description: `Development of FireOS and AOSP features for Android framework, SDK, NDK, drivers, kernels and applications.
+            Team supported a combination of 30 different form-factors and SoCs during my tenure.`,
+          startDate: 'Aug 2015',
           endDate: 'July 2018',
         },
         {
-          title: 'Software Manager - FireOS/Android Platform',
-          description: 'Software Engineering for FireOS and Android ',
-          startDate: 'July, 2018',
+          title: 'Software Manager - Amazon New Technology Initiatve',
+          description: `Transitioned from an IC to Manager while leading a cross domain device and cloud-infrastructure project.
+            I led and contirbuted to building high frequency IoT sensor software and infrastrucutre for petabyte scale ML pipeline.`,
+          startDate: 'July 2018',
           endDate: 'Sept 2022',
         },
       ],
@@ -45,15 +47,10 @@ const Home: React.FC = () => {
         'Leadership and Management',
         'Android',
         'IoT',
+        'Distributed Systems',
         'AWS Cloud Infrastructure',
         'Big Data Processnig',
       ],
-      // media: {
-      //   type: "IMAGE",
-      //   source: {
-      //     url: "/assets/images/amazon_logo.svg",
-      //   },
-      // },
     },
     {
       cardTitle: 'Plenty',
@@ -64,12 +61,23 @@ const Home: React.FC = () => {
         performance and SRE of Plenty's clould and on-premise software systems.
         In additon, I also led operational excellence initiatives for ~50 person software organization.`,
       image: '/assets/images/plenty_logo.svg',
-      icon: '/assets/images/plenty_sm.png',
+      icon: '/assets/images/plenty_sm2.png',
+      items: [
+        {
+          title: 'Software Engineer - FireOS/Android Platform',
+          description: `Development of FireOS and AOSP features for Android framework, SDK, NDK, drivers, kernels and applications.
+            Team supported a combination of 30 different form-factors and SoCs during my tenure.`,
+          startDate: 'Aug 2015',
+          endDate: 'July 2018',
+        },
+      ],
       tags: [
         'Leadership and Management',
+        'Distributed Systems',
         'AWS Cloud Infrastructure',
         'DevOps & Site Reliability',
       ],
+
       // media: {
       //   type: "IMAGE",
       //   source: {
@@ -85,6 +93,15 @@ const Home: React.FC = () => {
       cardDetailedText: `Leading a team of 4 engineers building features for a full-stack enterprise-grade web-app.`,
       image: '/assets/images/lm_logo.png',
       icon: '/assets/images/lm_sm.png',
+      items: [
+        {
+          title: 'Software Engineer - FireOS/Android Platform',
+          description: `Development of FireOS and AOSP features for Android framework, SDK, NDK, drivers, kernels and applications.
+            Team supported a combination of 30 different form-factors and SoCs during my tenure.`,
+          startDate: 'Aug 2015',
+          endDate: 'July 2018',
+        },
+      ],
       tags: [
         'Leadership and Management',
         'Full-stack web-app',
@@ -135,9 +152,10 @@ const Home: React.FC = () => {
   return (
     <div className="main-content">
       <h1>Career Timeline</h1>
-      <h2> Today: {dateToday} </h2>
+      <h2 className="timeline-end-text"> Today: {dateToday} </h2>
 
       <div className="timeline-content">
+        <div className="timeline-end-point" />
         <VerticalTimeline
           className="vertical-timeline-custom"
           animate={true}
@@ -147,8 +165,10 @@ const Home: React.FC = () => {
             <TimelineBox key={index} item={item} index={index} />
           ))}
         </VerticalTimeline>
+        <div className="timeline-end-point" />
       </div>
-      <h2> Since: {careerStartDate} </h2>
+
+      <h2 className="timeline-end-text"> Since: {careerStartDate} </h2>
     </div>
   );
 };
